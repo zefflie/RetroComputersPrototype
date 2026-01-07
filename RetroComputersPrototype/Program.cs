@@ -4,16 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        var rom = new ROMDevice(100, [
-            0b00100001,
-            0x00,
-            0xB0,
-
-            0b00110110,
-            (byte)'H',
-
-            0b01110110,
-        ]);
+        var rom = new ROMDevice(100, "C:\\Zefflie\\Projects\\RetroComputersPrototype\\test.bin");
 
         var pc = new Chipset();
         pc.MountDevice(rom);
