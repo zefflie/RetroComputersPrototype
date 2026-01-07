@@ -5,7 +5,7 @@ using System.Xml.Schema;
 namespace Retro.Compiler;
 public class Parser
 {
-    public static Regex RELabel = new(@"(\w+):\s*");
+    public static Regex RELabel = new(@"([_A-Za-z][_A-Za-z0-9]*):\s*");
 
     public static Regex REName = new(@"(\w+)\s+");
 
@@ -15,11 +15,15 @@ public class Parser
 
     static public Regex REChar = new(@"^'(\\?.)'$");
 
-    static public Regex RENumber = new(@"^(0x|0b)?(\d+)$");
+    static public Regex RENumber10 = new(@"^\d+$");
+
+    static public Regex RENumber2 = new(@"^0b([01]+)$");
+
+    static public Regex RENumber16 = new(@"^0x([0-9A-Fa-f]+)$");
 
     static public Regex REEscape = new(@"\\(.)");
 
-    static public Regex RELabelArg = new(@"^\w+$");
+    static public Regex RELabelArg = new(@"^[_A-Za-z][_A-Za-z0-9]*$");
 
     private static readonly Dictionary<string, string> EscapeTable = new()
     {
@@ -137,24 +141,29 @@ public class Parser
         }
 
         // Числа
-        var mo_number = RENumber.Match(rawarg);
-        if (mo_number.Success)
+        var mo_number10 = RENumber10.Match(rawarg);
+        if (mo_number10.Success)
         {
-            var cprefix = mo_number.Groups[1];
-            var cnumber = mo_number.Groups[2];
-            var from_base = 10;
-            if (cprefix.Success)
-            {
-                if (cprefix.Value == "0x") from_base = 16;
-                if (cprefix.Value == "0b") from_base = 16;
-            }
+            arg.Value = Convert.ToInt32(mo_number10.Value);
+            arg.Type = ArgumentType.Literal;
+        }
 
-            arg.Value = Convert.ToInt32(cnumber.Value, from_base);
+        var mo_number2 = RENumber10.Match(rawarg);
+        if (mo_number2.Success)
+        {
+            arg.Value = Convert.ToInt32(mo_number2.Value, 2);
+            arg.Type = ArgumentType.Literal;
+        }
+
+        var mo_number16 = RENumber16.Match(rawarg);
+        if (mo_number16.Success)
+        {
+            arg.Value = Convert.ToInt32(mo_number16.Value, 16);
             arg.Type = ArgumentType.Literal;
         }
 
         // Метки
-        var mo_label = RELabel.Match(rawarg);
+        var mo_label = RELabelArg.Match(rawarg);
         if (mo_label.Success)
         {
             arg.Label = mo_label.Value;
