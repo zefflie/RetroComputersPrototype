@@ -25,6 +25,10 @@ public class Parser
 
     static public Regex RELabelArg = new(@"^[_A-Za-z][_A-Za-z0-9]*$");
 
+    static public string[] Registers = ["B", "C", "D", "E", "H", "L", "noway", "A"];
+
+    static public string[] RegisterPairs = ["BC", "DE", "HL", "PSW"];
+
     private static readonly Dictionary<string, string> EscapeTable = new()
     {
         ["0"] = "\0",     // Null character
@@ -166,8 +170,25 @@ public class Parser
         var mo_label = RELabelArg.Match(rawarg);
         if (mo_label.Success)
         {
-            arg.Label = mo_label.Value;
-            arg.Type = ArgumentType.Label;
+            var upper = mo_label.Value.ToUpper();
+            // Регистры
+            if (Registers.Contains(upper))
+            {
+                arg.Value = Registers.IndexOf(upper);
+                arg.Type = ArgumentType.Register;
+            }
+            // Регистровые пары
+            else if (RegisterPairs.Contains(upper))
+            {
+                arg.Value = RegisterPairs.IndexOf(upper);
+                arg.Type = ArgumentType.RegisterPair;
+            }
+            // Все-же метка
+            else
+            {
+                arg.Label = mo_label.Value;
+                arg.Type = ArgumentType.Label;
+            }
         }
 
         if (arg.Type == ArgumentType.Unknown) throw new($"Invalid argument {rawarg}");

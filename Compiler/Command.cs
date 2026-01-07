@@ -33,6 +33,8 @@ public enum ArgumentType
     Literal,
     String,
     Label,
+    Register,
+    RegisterPair,
 }
 public class Argument
 {
