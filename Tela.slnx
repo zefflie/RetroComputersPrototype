@@ -1,8 +1,5 @@
 <Solution>
-  <Folder Name="/Workspace/">
-    <File Path="Workspace/examples/test.nya" />
-    <File Path="Workspace/examples/test.tela" />
-  </Folder>
-  <Project Path="Nyassembler/Nyassembler.csproj" Id="a7b322cc-3cd0-4ba3-b82c-9c8ce9355807" />
   <Project Path="Emulator/Emulator.csproj" />
+  <Project Path="Nyassembler/Nyassembler.csproj" Id="a7b322cc-3cd0-4ba3-b82c-9c8ce9355807" />
+  <Project Path="Workspace/Workspace.shproj" Id="a9c6c601-ae04-4936-ba1b-f73813530164" />
 </Solution>
