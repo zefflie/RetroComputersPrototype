@@ -93,6 +93,8 @@ public class Parser
             {
                 List<string> rawargs = SplitArgs(templine);
                 command.Args = ParseArgs(rawargs);
+            }
+
                 result.Add(command);
             }
         }
