@@ -1,24 +1,6 @@
-﻿namespace Retro.Compiler;
+﻿using Retro.Compiler.Enums;
 
-public enum Directive
-{
-    EQU,
-    DB,
-    SKIP,
-
-    Unknown,
-}
-
-public enum Instruction
-{
-    NOP,
-    MOV,
-    LDA,
-    STA,
-    HLT,
-
-    Unknown,
-}
+namespace Retro.Compiler;
 
 public class Command
 {
@@ -31,15 +13,6 @@ public class Command
     public List<Argument> Args { get; set; } = [];
 }
 
-public enum ArgumentType
-{
-    Unknown,
-    Literal,
-    String,
-    Label,
-    Register,
-    RegisterPair,
-}
 public class Argument
 {
     public ArgumentType Type = ArgumentType.Unknown;
