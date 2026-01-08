@@ -7,7 +7,7 @@ public class Parser
 {
     public static Regex RELabel = new(@"([_A-Za-z][_A-Za-z0-9]*):\s*");
 
-    public static Regex REName = new(@"(\w+)\s+");
+    public static Regex REName = new(@"(\w+)\s*");
 
     static public Regex REMemory = new(@"\[\s*(.*)\s*\]");
 
