@@ -3,7 +3,7 @@
 ;;  Константы
 ;; 
 
-buffer: equ 0xB000
+textbuffer: equ 0xB000
 
 
 
@@ -11,11 +11,25 @@ buffer: equ 0xB000
 ;;  Код
 ;; 
 
-skip 100 ; Временная директива для пропуска байт в файле
-lda msg
-sta buffer
-hlt
+	skip 100 ; Временная директива для пропуска байт в файле. Мне лень org.
 
+	lxi  de, textbuffer
+	lxi  hl, msg
+
+loop:
+	mov  a, m
+	cpi  0
+	jz   end
+	xchg
+	mov  m, a
+	xchg
+	inx  de
+	inx  hl
+	jmp  loop
+
+end:
+	hlt
+	
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
