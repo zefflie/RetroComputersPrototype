@@ -1,6 +1,7 @@
-﻿using Retro.Compiler.Generators;
+﻿using Retro.Nyassembler;
+using Retro.Nyassembler.Generators;
 
-namespace Retro.Compiler;
+namespace Retro.Nyassembler;
 
 class Program
 {

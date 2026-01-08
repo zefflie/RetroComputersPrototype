@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Retro.Compiler.Enums;
+namespace Retro.Nyassembler.Enums;
 public enum Directive
 {
     EQU,

@@ -1,7 +1,8 @@
-﻿using Retro.Compiler.Enums;
+﻿using Retro.Nyassembler.Enums;
+using Retro.Nyassembler;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace Retro.Compiler.Generators;
+namespace Retro.Nyassembler.Generators;
 
 public partial class Generator
 {

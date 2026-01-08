@@ -1,8 +1,8 @@
 ﻿using System.Text;
 using System.Text.RegularExpressions;
-using Retro.Compiler.Enums;
+using Retro.Nyassembler.Enums;
 
-namespace Retro.Compiler;
+namespace Retro.Nyassembler;
 public class Parser
 {
     public static Regex RELabel = new(@"([_A-Za-z][_A-Za-z0-9]*):\s*");

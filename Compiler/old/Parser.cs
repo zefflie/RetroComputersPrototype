@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 
-namespace Retro.Compiler.old;
+namespace Retro.Nyassembler.old;
 
 
 class Parser

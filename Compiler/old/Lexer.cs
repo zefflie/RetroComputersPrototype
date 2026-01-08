@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Retro.Compiler.old;
+namespace Retro.Nyassembler.old;
 
 class Lexer
 {

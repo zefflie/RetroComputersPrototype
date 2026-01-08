@@ -1,6 +1,7 @@
-﻿using Retro.Compiler.Enums;
+﻿using Retro.Nyassembler.Enums;
+using Retro.Nyassembler;
 
-namespace Retro.Compiler.Generators;
+namespace Retro.Nyassembler.Generators;
 
 public partial class Generator
 {

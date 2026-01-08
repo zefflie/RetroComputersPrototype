@@ -1,4 +1,4 @@
-﻿namespace Retro.Compiler.Enums;
+﻿namespace Retro.Nyassembler.Enums;
 
 public enum ArgumentType
 {

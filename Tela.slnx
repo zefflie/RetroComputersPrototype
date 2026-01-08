@@ -3,6 +3,6 @@
     <File Path="test.nya" />
     <File Path="test.tela" />
   </Folder>
-  <Project Path="Compiler/Compiler.csproj" Id="a7b322cc-3cd0-4ba3-b82c-9c8ce9355807" />
+  <Project Path="Compiler/Nyassembler.csproj" Id="a7b322cc-3cd0-4ba3-b82c-9c8ce9355807" />
   <Project Path="RetroComputersPrototype/Emulator.csproj" />
 </Solution>

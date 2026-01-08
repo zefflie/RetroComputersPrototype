@@ -1,4 +1,4 @@
-﻿namespace Retro.Compiler.old;
+﻿namespace Retro.Nyassembler.old;
 
 class SourceCode
 {

@@ -1,6 +1,6 @@
-﻿using Retro.Compiler.Enums;
+﻿using Retro.Nyassembler.Enums;
 
-namespace Retro.Compiler;
+namespace Retro.Nyassembler;
 
 public class Command
 {
