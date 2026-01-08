@@ -152,7 +152,7 @@ public class Parser
             arg.Type = ArgumentType.Literal;
         }
 
-        var mo_number2 = RENumber10.Match(rawarg);
+        var mo_number2 = RENumber2.Match(rawarg);
         if (mo_number2.Success)
         {
             arg.Value = Convert.ToInt32(mo_number2.Value, 2);
