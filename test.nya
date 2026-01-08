@@ -13,22 +13,22 @@ textbuffer: equ 0xB000
 
 	skip 100 ; Временная директива для пропуска байт в файле. Мне лень org.
 
-	lxi  de, textbuffer
-	lxi  hl, msg
+	lxi  de, textbuffer ; Назначение
+	lxi  hl, msg        ; Источник
 
 loop:
-	mov  a, m
-	cpi  0
-	jz   end
-	xchg
-	mov  m, a
-	xchg
-	inx  de
-	inx  hl
-	jmp  loop
+	mov  a, m ; Считываем символ
+	cpi  0    ; Если равен 0
+	jz   end  ; Завершаем
+	xchg      ; Переключаемся на назначение
+	mov  m, a ; Записываем символ
+	xchg      ; Переключаемя на источник
+	inx  de   ; Смещаемся в назначении
+	inx  hl   ; Смещаемся в источнике
+	jmp  loop ; Повтор
 
 end:
-	hlt
+	hlt       ; Стоп-машина
 	
 
 
