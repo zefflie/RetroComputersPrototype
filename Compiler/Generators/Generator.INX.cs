@@ -10,6 +10,6 @@ public partial class Generator
         var rp = command.Args[0];
 
         if (rp.Type != ArgumentType.RegisterPair) throw new($"LXI operand #1 type {rp.Type}, RegisterPair expected");
-        Write((byte)(0b1 | rp.Value << 4));
+        Write((byte)(0b00000011 | rp.Value << 4));
     }
 }
