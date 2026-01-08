@@ -11,8 +11,10 @@ buffer: equ 0xB000
 ;;  Код
 ;; 
 
-mov a, [msg]
-mov [buffer], a
+skip 100 ; Временная директива для пропуска байт в файле
+lda msg
+sta buffer
+hlt
 
 
 

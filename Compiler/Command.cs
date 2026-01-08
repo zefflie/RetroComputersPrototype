@@ -4,6 +4,7 @@ public enum Directive
 {
     EQU,
     DB,
+    SKIP,
 
     Unknown,
 }
@@ -12,6 +13,9 @@ public enum Instruction
 {
     NOP,
     MOV,
+    LDA,
+    STA,
+    HLT,
 
     Unknown,
 }

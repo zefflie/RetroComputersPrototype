@@ -1,6 +1,5 @@
 ﻿using System.Text;
 using System.Text.RegularExpressions;
-using System.Xml.Schema;
 
 namespace Retro.Compiler;
 public class Parser

@@ -1,4 +1,6 @@
-﻿namespace Retro.Compiler;
+﻿using System.Security.Cryptography;
+
+namespace Retro.Compiler;
 
 public class Generator
 {
@@ -89,6 +91,17 @@ public class Generator
                 }
 
                 break;
+
+            case Directive.SKIP:
+                {
+                    if (command.Args.Count != 1) throw new("SKIP accepts one argument");
+                    var arg = command.Args[0];
+                    if (arg.Type != ArgumentType.Literal) throw new("EQU argument must be literal");
+
+                    File.Data.AddRange(new byte[arg.Value]);
+                    Position += arg.Value;
+                    break;
+                }
         }
     }
 
@@ -160,6 +173,62 @@ public class Generator
 
                     break;
                 }
+
+            case Instruction.LDA:
+                {
+                    if (command.Args.Count != 1) throw new("LDA accepts one operand");
+                    File.Data.Add(0b00111010); Position++;
+                    var addr = command.Args[0];
+
+                    if (addr.Type == ArgumentType.Literal)
+                    {
+                        var bytes = IntToBytes(addr.Value, 2);
+                        File.Data.AddRange(bytes);
+                    }
+                    else if (addr.Type == ArgumentType.Label) {
+                        GetSymbol(addr.Label).Links.Add(new(Position, 2));
+                        File.Data.AddRange([0, 0]);
+                    }
+                    else
+                    {
+                        throw new("Invalid argument type for MOV");
+                    }
+
+                    Position += 2;
+
+                    break;
+                }
+
+            case Instruction.STA:
+                {
+                    if (command.Args.Count != 1) throw new("STA accepts one operand");
+                    File.Data.Add(0b00110010); Position++;
+                    var addr = command.Args[0];
+
+                    if (addr.Type == ArgumentType.Literal)
+                    {
+                        var bytes = IntToBytes(addr.Value, 2);
+                        File.Data.AddRange(bytes);
+                    }
+                    else if (addr.Type == ArgumentType.Label)
+                    {
+                        GetSymbol(addr.Label).Links.Add(new(Position, 2));
+                        File.Data.AddRange([0, 0]);
+                    }
+                    else
+                    {
+                        throw new("Invalid argument type for MOV");
+                    }
+
+                    Position += 2;
+
+                    break;
+                }
+
+            case Instruction.HLT:
+                File.Data.Add(0b01110110);
+                Position++;
+                break;
         }
     }
 
