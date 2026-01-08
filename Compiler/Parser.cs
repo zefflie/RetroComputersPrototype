@@ -25,7 +25,7 @@ public class Parser
 
     static public Regex RELabelArg = new(@"^[_A-Za-z][_A-Za-z0-9]*$");
 
-    static public string[] Registers = ["B", "C", "D", "E", "H", "L", "noway", "A"];
+    static public string[] Registers = ["B", "C", "D", "E", "H", "L", "M", "A"];
 
     static public string[] RegisterPairs = ["BC", "DE", "HL", "PSW"];
 
@@ -96,8 +96,7 @@ public class Parser
                 command.Args = ParseArgs(rawargs);
             }
 
-                result.Add(command);
-            }
+            result.Add(command);
         }
 
         return result;
@@ -178,6 +177,7 @@ public class Parser
             {
                 arg.Value = Registers.IndexOf(upper);
                 arg.Type = ArgumentType.Register;
+                if (arg.Value == 6) arg.IsMemoryAccess = true;
             }
             // Регистровые пары
             else if (RegisterPairs.Contains(upper))
