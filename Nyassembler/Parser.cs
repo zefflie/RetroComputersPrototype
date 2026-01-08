@@ -193,7 +193,7 @@ public class Parser
             }
         }
 
-        if (arg.Type == ArgumentType.Unknown) throw new($"Invalid argument {rawarg}");
+        if (arg.Type == ArgumentType.Unknown) throw new($"Invalid operand {rawarg}");
 
         return arg;
     }

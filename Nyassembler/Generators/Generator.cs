@@ -58,17 +58,83 @@ public partial class Generator
     {
         switch (command.Instruction)
         {
-            case Instruction.NOP: EncodeNOP(command); break;
             case Instruction.MOV: EncodeMOV(command); break;
-            case Instruction.LDA: EncodeLDA(command); break;
-            case Instruction.STA: EncodeSTA(command); break;
-            case Instruction.HLT: EncodeHLT(command); break;
+            case Instruction.MVI: EncodeMVI(command); break;
             case Instruction.LXI: EncodeLXI(command); break;
+            case Instruction.LDA: EncodeLDA(command); break;
+            case Instruction.LHLD: EncodeLHLD(command); break;
+            case Instruction.LDAX: EncodeLDAX(command); break;
             case Instruction.XCHG: EncodeXCHG(command); break;
+            case Instruction.STA: EncodeSTA(command); break;
+            case Instruction.SHLD: EncodeSHLD(command); break;
+            case Instruction.STAX: EncodeSTAX(command); break;
+
+            case Instruction.ADD: EncodeADD(command); break;
+            case Instruction.ADI: EncodeADI(command); break;
+            case Instruction.ADC: EncodeADC(command); break;
+            case Instruction.ACI: EncodeACI(command); break;
+            case Instruction.SUB: EncodeSUB(command); break;
+            case Instruction.SUI: EncodeSUI(command); break;
+            case Instruction.SBB: EncodeSBB(command); break;
+            case Instruction.SBI: EncodeSBI(command); break;
+            case Instruction.ANA: EncodeANA(command); break;
+            case Instruction.ANI: EncodeANI(command); break;
+            case Instruction.XRA: EncodeXRA(command); break;
+            case Instruction.XRI: EncodeXRI(command); break;
+            case Instruction.ORA: EncodeORA(command); break;
+            case Instruction.ORI: EncodeORI(command); break;
+            case Instruction.CMP: EncodeCMP(command); break;
             case Instruction.CPI: EncodeCPI(command); break;
-            case Instruction.JZ: EncodeJZ(command); break;
+            case Instruction.INR: EncodeINR(command); break;
             case Instruction.INX: EncodeINX(command); break;
-            case Instruction.JMP: EncodeJMP(command); break;
+            case Instruction.DCR: EncodeDCR(command); break;
+            case Instruction.DCX: EncodeDCX(command); break;
+            case Instruction.DAD: EncodeDAD(command); break;
+            case Instruction.RLC: EncodeRLC(command); break;
+            case Instruction.RRC: EncodeRRC(command); break;
+            case Instruction.RAL: EncodeRAL(command); break;
+            case Instruction.RAR: EncodeRAR(command); break;
+            case Instruction.DAA: EncodeDAA(command); break;
+            case Instruction.CMA: EncodeCMA(command); break;
+            case Instruction.STC: EncodeSTC(command); break;
+            case Instruction.CMC: EncodeCMC(command); break;
+
+            case Instruction.PCHL: EncodePCHL(command); break;
+            case Instruction.JNZ:
+            case Instruction.JZ:
+            case Instruction.JNC:
+            case Instruction.JC:
+            case Instruction.JPO:
+            case Instruction.JPE:
+            case Instruction.JP:
+            case Instruction.JM: EncodeJcc(command); break;
+            case Instruction.CNZ:
+            case Instruction.CZ:
+            case Instruction.CNC:
+            case Instruction.CC:
+            case Instruction.CPO:
+            case Instruction.CPE:
+            case Instruction.CP:
+            case Instruction.CM: EncodeCcc(command); break;
+            case Instruction.RNZ:
+            case Instruction.RZ:
+            case Instruction.RNC:
+            case Instruction.RC:
+            case Instruction.RPO:
+            case Instruction.RPE:
+            case Instruction.RP:
+            case Instruction.RM: EncodeRcc(command); break;
+            case Instruction.RST: EncodeRST(command); break;
+            case Instruction.PUSH: EncodePUSH(command); break;
+            case Instruction.POP: EncodePOP(command); break;
+            case Instruction.XTHL: EncodeXTHL(command); break;
+            case Instruction.SPHL: EncodeSPHL(command); break;
+            case Instruction.IN: EncodeIN(command); break;
+            case Instruction.OUT: EncodeOUT(command); break;
+            case Instruction.EI: EncodeEI(command); break;
+            case Instruction.DI: EncodeDI(command); break;
+            case Instruction.HLT: EncodeHLT(command); break;
+            case Instruction.NOP: EncodeNOP(command); break;
             default: throw new NotImplementedException(command.Instruction.ToString());
         }
     }

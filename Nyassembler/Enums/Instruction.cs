@@ -23,9 +23,9 @@ public enum Instruction
     CMA, STC, CMC,
 
     PCHL,
-    JMP, JZ,
-    CALL, CZ,
-    RET, RZ,
+    JMP, JNZ, JZ, JNC, JC, JPO, JPE, JP, JM,
+    CALL, CNZ, CZ, CNC, CC, CPO, CPE, CP, CM,
+    RET, RNZ, RZ, RNC, RC, RPO, RPE, RP, RM,
     RST,
     PUSH, POP,
     XTHL, SPHL,
