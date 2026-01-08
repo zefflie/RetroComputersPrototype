@@ -1,11 +1,20 @@
 ﻿using Retro.Nyassembler.Enums;
-using Retro.Nyassembler;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Retro.Nyassembler.Generators;
 
 public partial class Generator
 {
+    public void EncodeNOP(Command command)
+    {
+        State.Data.Add(0); State.Position++;
+    }
+
+    public void EncodeHLT(Command command)
+    {
+        State.Data.Add(0b01110110);
+        State.Position++;
+    }
+
     public void EncodeJMP(Command command)
     {
         if (command.Args.Count != 1) throw new("JMP accepts one argument");

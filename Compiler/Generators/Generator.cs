@@ -1,6 +1,4 @@
 ﻿using Retro.Nyassembler.Enums;
-using Retro.Nyassembler;
-using System.Drawing;
 
 namespace Retro.Nyassembler.Generators;
 

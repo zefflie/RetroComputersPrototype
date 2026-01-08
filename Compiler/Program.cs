@@ -1,5 +1,4 @@
-﻿using Retro.Nyassembler;
-using Retro.Nyassembler.Generators;
+﻿using Retro.Nyassembler.Generators;
 
 namespace Retro.Nyassembler;
 
